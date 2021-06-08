@@ -144,3 +144,63 @@
 1623164339 POST   /api/sso
 1623164339 ERROR  Error: getaddrinfo ENOTFOUND undefined
     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+1623164943 POST   /
+1623164943 POST   /api/sso
+1623164944 ERROR  error: operator does not exist: text = integer
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623165032 POST   /
+1623165032 POST   /api/sso
+1623165033 ERROR  error: operator does not exist: text = integer
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623165101 POST   /
+1623165101 POST   /api/sso
+1623165102 ERROR  error: operator does not exist: text = integer
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623165288 POST   /api/sso
+1623165288 POST   /
+1623165355 POST   /
+1623165355 POST   /api/sso
+1623165404 POST   /
+1623165404 POST   /api/sso
+1623165503 POST   /
+1623165503 POST   /api/sso
+1623165550 POST   /
+1623165550 POST   /api/sso
+1623165677 POST   /
+1623165677 POST   /api/sso
+1623165678 ERROR  error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623165691 POST   /
+1623165691 POST   /api/sso

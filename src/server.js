@@ -17,7 +17,7 @@ app.use('/api', userRouter);
 app.get('/*', (req, res) => res.redirect('/'));
 app.use(errorHandler);
 
-const port = 3000;
+const port = 80;
 app.listen(port, () => {
     console.log(`Server is up and running on port ${port}...`);
 });

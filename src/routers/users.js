@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 const accessController = require('../middleware/access-controller.js');
 
 const userModel = require('../model/user.js');
-
+const KEY = "awesomeAustin"
 const router = express.Router();
 
 router.use(express.json());
@@ -28,8 +28,9 @@ router.post('/sso',
   const { name, sso, email, photo } = req.body;
 
   userModel
-    .list(searchText = '', lat = 0, long = 0, '', sso)
+    .list(searchText = '', lat = 0.0, long = 0.0, '', sso)
     .then((users) => {
+      console.log(users)
       if(users.length === 1){
         var payload = {
           username: users[0].name,
@@ -42,6 +43,7 @@ router.post('/sso',
         userModel
           .create(id, name, sso, email, photo)
           .then((user) => {
+            console.log(user)
             var payload = {
               username: user.name,
               userid: user.id,
@@ -49,7 +51,7 @@ router.post('/sso',
             var token = jwt.sign(payload, KEY, {algorithm: 'HS256', expiresIn: "365d"});
             res.send(token)
           })
-          .catch(next);
+          res.send(token)
 
       }
     })

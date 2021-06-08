@@ -7,16 +7,21 @@ function list(searchText = '', lat = 0, long = 0, id = '', sso = '') {
   const where = [];
   if (searchText) where.push(`name ILIKE '%$1:value%'`);
 
-  if(id){
-    where.push(`id = $2`);
-  }else{
-    if(sso){
-      if (sso) where.push(`sso = $2`);
-    }else{
-      if (lat) where.push('lat < $2 + 0.00001 AND lat > $2 - 0.00001');
-      if (long) where.push('long < $3 + 0.00001 AND long > $3 - 0.00001');
-    }
-  }
+
+  if(sso) where.push(`sso = $2`);
+
+  // if(id){
+  //   where.push(`id = $2`);
+  // }else{
+  //   if(sso){
+  //     if (sso) where.push(`sso = $2`);
+  //   }else{
+  //     if (lat) where.push('lat < $2 + 0.00001 AND lat > $2 - 0.00001');
+  //     if (long) where.push('long < $3 + 0.00001 AND long > $3 - 0.00001');
+  //   }
+  // }
+
+  
 
   const sql = `
         SELECT *
@@ -25,16 +30,16 @@ function list(searchText = '', lat = 0, long = 0, id = '', sso = '') {
         ORDER BY ts DESC
         LIMIT 10
     `;
-  return db.any(sql, [searchText, lat, long, id, sso]);
+  return db.any(sql, [searchText, sso]);
 }
 
-function create(name = '', sso = '', email = '', photo = '') {
+function create(id = '', name = '', sso = '', email = '', photo = '') {
   const sql = `
         INSERT INTO users ($<this:name>)
-        VALUES ($<id>, $<name>, $<sso>, $<email> $<photo>)
+        VALUES ($<id>, $<name>, $<sso>, $<email>, $<photo>)
         RETURNING *
     `;
-  return db.one(sql, { name, sso, email, photo });
+  return db.one(sql, { id, name, sso, email, photo });
 }
 
 function update(id = '', lat = 0, long = 0, photo = '', gender = '', name = '') {
