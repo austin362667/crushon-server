@@ -50,3 +50,97 @@
 1623154255 GET    /api/users
 1623154256 GET    /favicon.ico
 1623154256 GET    /
+1623163488 GET    /sso
+1623163488 GET    /
+1623163488 GET    /styles/owfont-regular.min.css
+1623163488 GET    /854.bundle.js
+1623163488 GET    /styles/weather.css
+1623163488 GET    /index.bundle.js
+1623163488 GET    /images/w-na.png
+1623163488 GET    /api/posts
+1623163488 GET    /images/w-na-bg.jpg
+1623163488 GET    /favicon.ico
+1623163944 POST   /
+1623163996 POST   /
+1623163996 POST   /api/sso
+1623163996 ERROR  SyntaxError: Unexpected token 
+ in JSON at position 220
+    at JSON.parse (<anonymous>)
+    at parse (/Users/austin/Desktop/crushon-server/node_modules/body-parser/lib/types/json.js:89:19)
+    at /Users/austin/Desktop/crushon-server/node_modules/body-parser/lib/read.js:121:18
+    at invokeCallback (/Users/austin/Desktop/crushon-server/node_modules/raw-body/index.js:224:16)
+    at done (/Users/austin/Desktop/crushon-server/node_modules/raw-body/index.js:213:7)
+    at IncomingMessage.onEnd (/Users/austin/Desktop/crushon-server/node_modules/raw-body/index.js:273:7)
+    at IncomingMessage.emit (events.js:327:22)
+    at endReadableNT (internal/streams/readable.js:1327:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+1623164008 GET    /
+1623164008 GET    /styles/owfont-regular.min.css
+1623164008 GET    /styles/weather.css
+1623164008 GET    /854.bundle.js
+1623164008 GET    /index.bundle.js
+1623164008 GET    /images/w-na.png
+1623164008 GET    /images/w-na-bg.jpg
+1623164008 GET    /favicon.ico
+1623164008 GET    /images/w-clouds.png
+1623164008 GET    /images/w-clouds-bg.jpg
+1623164076 POST   /
+1623164076 POST   /api/sso
+1623164076 ERROR  SyntaxError: Unexpected token 
+ in JSON at position 220
+    at JSON.parse (<anonymous>)
+    at parse (/Users/austin/Desktop/crushon-server/node_modules/body-parser/lib/types/json.js:89:19)
+    at /Users/austin/Desktop/crushon-server/node_modules/body-parser/lib/read.js:121:18
+    at invokeCallback (/Users/austin/Desktop/crushon-server/node_modules/raw-body/index.js:224:16)
+    at done (/Users/austin/Desktop/crushon-server/node_modules/raw-body/index.js:213:7)
+    at IncomingMessage.onEnd (/Users/austin/Desktop/crushon-server/node_modules/raw-body/index.js:273:7)
+    at IncomingMessage.emit (events.js:327:22)
+    at endReadableNT (internal/streams/readable.js:1327:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+1623164146 POST   /
+1623164146 POST   /api/sso
+1623164146 ERROR  TypeError: Assignment to constant variable.
+    at /Users/austin/Desktop/crushon-server/src/routers/users.js:31:60
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:275:10)
+    at module.exports (/Users/austin/Desktop/crushon-server/src/middleware/access-controller.js:20:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+1623164186 POST   /
+1623164186 POST   /api/sso
+1623164186 ERROR  TypeError: Assignment to constant variable.
+    at /Users/austin/Desktop/crushon-server/src/routers/users.js:31:15
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:275:10)
+    at module.exports (/Users/austin/Desktop/crushon-server/src/middleware/access-controller.js:20:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+1623164225 POST   /
+1623164225 POST   /api/sso
+1623164225 ERROR  ReferenceError: name is not defined
+    at /Users/austin/Desktop/crushon-server/src/routers/users.js:29:15
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:275:10)
+    at module.exports (/Users/austin/Desktop/crushon-server/src/middleware/access-controller.js:20:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+1623164279 POST   /
+1623164279 POST   /api/sso
+1623164280 ERROR  Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+1623164339 POST   /
+1623164339 POST   /api/sso
+1623164339 ERROR  Error: getaddrinfo ENOTFOUND undefined
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)

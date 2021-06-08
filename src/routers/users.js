@@ -23,10 +23,12 @@ router.get('/users', function (req, res, next) {
 });
 
 // Single Sign On
-router.post('/sso', function (req, res, next) {
+router.post('/sso', 
+  function (req, res, next) {
   const { name, sso, email, photo } = req.body;
+
   userModel
-    .list(searchText = '', lat = 0, long = 0, id = '', sso = sso)
+    .list(searchText = '', lat = 0, long = 0, '', sso)
     .then((users) => {
       if(users.length === 1){
         var payload = {
