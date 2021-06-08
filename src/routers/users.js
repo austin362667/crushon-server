@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const accessController = require('../middleware/access-controller.js');
 
-const userModel = require('../model/users.js');
+const userModel = require('../model/user.js');
 
 const router = express.Router();
 
