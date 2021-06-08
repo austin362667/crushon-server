@@ -25,7 +25,7 @@ function list(searchText = '', lat = 0, long = 0, id = '', sso = '') {
         ORDER BY ts DESC
         LIMIT 10
     `;
-  return db.any(sql, [searchText, lat, long, id]);
+  return db.any(sql, [searchText, lat, long, id, sso]);
 }
 
 function create(name = '', sso = '', email = '', photo = '') {

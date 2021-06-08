@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-import { v4 as uuid } from 'uuid';
+const { v4: uuid } = require('uuid');
 const accessController = require('../middleware/access-controller.js');
 
 const userModel = require('../model/user.js');

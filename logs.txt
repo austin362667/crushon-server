@@ -26,3 +26,27 @@
 1623151841 GET    /favicon.ico
 1623151844 GET    /854.bundle.js.map
 1623151844 GET    /index.bundle.js.map
+1623154211 GET    /
+1623154211 GET    /styles/owfont-regular.min.css
+1623154211 GET    /styles/weather.css
+1623154211 GET    /854.bundle.js
+1623154211 GET    /index.bundle.js
+1623154211 GET    /images/w-na.png
+1623154211 GET    /api/posts
+1623154212 GET    /images/w-na-bg.jpg
+1623154212 GET    /favicon.ico
+1623154219 GET    /api/users
+1623154219 ERROR  error: database "undefined" does not exist
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623154219 GET    /favicon.ico
+1623154255 GET    /api/users
+1623154256 GET    /favicon.ico
+1623154256 GET    /
