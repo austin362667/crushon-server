@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { v4: uuid } = require('uuid');
+var jwt = require('jsonwebtoken');
 const accessController = require('../middleware/access-controller.js');
 
 const userModel = require('../model/user.js');
