@@ -5,7 +5,6 @@ const db = pgp(process.env.DB_URL);
 const schemaSql = `
     -- Extensions
     CREATE EXTENSION IF NOT EXISTS pg_trgm;
-    CREATE EXTENSION IF NOT EXISTS uuid-ossp;
 
     -- Drop (droppable only when no dependency)
     DROP INDEX IF EXISTS users_idx_name;
@@ -20,7 +19,7 @@ const schemaSql = `
       'n'
   );
     CREATE TABLE users (
-        id              uuid PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+        id              uuid PRIMARY KEY NOT NULL,
         gender          gender,
         name            text NOT NULL,
         sso             text NOT NULL,
@@ -28,7 +27,7 @@ const schemaSql = `
         photo           text,
         lat             real,
         long            real,
-        ts              bigint NOT NULL DEFAULT (extract(epoch from now())),
+        ts              bigint NOT NULL DEFAULT (extract(epoch from now()))
     );
     CREATE INDEX posts_idx_ts ON users USING btree(ts);
     CREATE INDEX posts_idx_name ON users USING gin(text gin_trgm_ops);

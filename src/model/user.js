@@ -31,7 +31,7 @@ function list(searchText = '', lat = 0, long = 0, id = '', sso = '') {
 function create(name = '', sso = '', email = '', photo = '') {
   const sql = `
         INSERT INTO users ($<this:name>)
-        VALUES ($<name>, $<sso>, $<email> $<photo>)
+        VALUES ($<id>, $<name>, $<sso>, $<email> $<photo>)
         RETURNING *
     `;
   return db.one(sql, { name, sso, email, photo });

@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+import { v4 as uuid } from 'uuid';
 const accessController = require('../middleware/access-controller.js');
 
 const userModel = require('../model/user.js');
@@ -34,9 +35,9 @@ router.post('/sso', function (req, res, next) {
         var token = jwt.sign(payload, KEY, {algorithm: 'HS256', expiresIn: "365d"});
         res.send(token)
       }else{
-
+        const id = uuid();
         userModel
-          .create(name, sso, email, photo)
+          .create(id, name, sso, email, photo)
           .then((user) => {
             var payload = {
               username: user.name,
