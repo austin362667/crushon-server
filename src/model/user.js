@@ -31,7 +31,7 @@ function list_id(id) {
 }
 
 
-function list(searchText = '', lat = 0, long = 0) {
+function list(searchText = '') {
   const where = [];
   if (searchText) where.push(`name ILIKE '%$1:value%'`);
 
@@ -53,7 +53,7 @@ function list(searchText = '', lat = 0, long = 0) {
         FROM users
         ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
         ORDER BY ts DESC
-        LIMIT 10
+        LIMIT 100
     `;
   return db.any(sql, [searchText]);
 }
@@ -67,26 +67,22 @@ function create(id = '', name = '', sso = '', email = '', photo = '') {
   return db.one(sql, { id, name, sso, email, photo });
 }
 
-function update(id = '', lat = 0, long = 0, photo = '', gender = '', name = '') {
+function update_location(id, lat, long) {
   const where = [];
   if (id) where.push(`id = $1`);
 
   const update= [];
   if (lat) update.push(`lat = $2`);
   if (long) update.push(`long = $3`);
-  if (photo) update.push(`photo = $4`);
-  if (gender) update.push(`gender = $5`);
-  if (name) update.push(`name = $6`);
   
 
   const sql = `
         UPDATE users
         ${update.length ? ' SET ' + update.join(' , ') : ''}
         ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
-        ORDER BY ts DESC
-        LIMIT 10
+        RETURNING *
     `;
-  return db.one(sql, [id, lat, long, photo, gender, name]);
+  return db.one(sql, [id, lat, long]);
 }
 
 module.exports = {
@@ -94,5 +90,5 @@ module.exports = {
   list_id,
   list,
   create,
-  update,
+  update_location,
 };

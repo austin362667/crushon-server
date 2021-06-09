@@ -11,13 +11,35 @@ const router = express.Router();
 router.use(express.json());
 router.use(accessController); // Allows cross-origin HTTP requests
 
-// List User
+// List ALl Users
 router.get('/users', function (req, res, next) {
-  const { searchText, lat, long, id } = req.query;
+  // var str = req.get('Authorization');
+  // jwt.verify(str, KEY, {algorithm: 'HS256'});
   userModel
-    .list(searchText, lat, long, id)
+    .list()
     .then((users) => {
-      res.json(users);
+      res.json(users[0]);
+    })
+    .catch(next);
+});
+
+
+// List User By ID
+router.post('/user_id', function (req, res, next) {
+  const { id } = req.query;
+  // var str = req.get('Authorization');
+  // jwt.verify(str, KEY, {algorithm: 'HS256'});
+  if (!id) {
+    const err = new Error('User ID is required');
+    err.status = 400;
+    throw err;
+  }
+  userModel
+    .list_id(id)
+    .then((users) => {
+      if(users.length === 1){
+      res.json(users[0]);
+      }
     })
     .catch(next);
 });
@@ -60,7 +82,7 @@ router.post('/sso',
 
 
 // Update User Location
-router.post('/user',
+router.post('/user_location',
   function (req, res, next) {
     const { id, lat, long } = req.body;
     if ((!lat || !long) || !id) {
@@ -69,7 +91,7 @@ router.post('/user',
       throw err;
     }
     userModel
-      .update(id, lat, long)
+      .update_location(id, lat, long)
       .then((user) => {
         res.json(user);
       })
