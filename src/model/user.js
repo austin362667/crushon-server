@@ -43,6 +43,15 @@ function list_followee(id) {
   return db.any(sql, [id]);
 }
 
+function follow(id, from, to) {
+  const sql = `
+        INSERT INTO follows ($<this:name>)
+        VALUES ($<id>, $<from>, $<to>)
+        RETURNING *
+    `;
+  return db.one(sql, { id, from, to });
+}
+
 
 function list_location(lat, long) {
   const where = [];

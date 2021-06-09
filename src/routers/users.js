@@ -11,7 +11,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(accessController); // Allows cross-origin HTTP requests
 
-// List ALl Users
+// List All Users
 router.get('/users', function (req, res, next) {
   // var str = req.get('Authorization');
   // jwt.verify(str, KEY, {algorithm: 'HS256'});
@@ -53,6 +53,20 @@ router.post('/getUserLikeNum', function (req, res, next) {
     .list_followee(id)
     .then((users) => {
       res.json(users.length);
+    })
+    .catch(next);
+});
+
+// Create Follow
+router.post('/createFollow', function (req, res, next) {
+  const { from, to } = req.body;
+  // var str = req.get('Authorization');
+  // jwt.verify(str, KEY, {algorithm: 'HS256'});
+  const id = uuid();
+  userModel
+    .follow( id, from, to )
+    .then(() => {
+      res.json('ok');
     })
     .catch(next);
 });
