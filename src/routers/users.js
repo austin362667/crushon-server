@@ -26,11 +26,11 @@ router.get('/users', function (req, res, next) {
 router.post('/sso', 
   function (req, res, next) {
   const { name, sso, email, photo } = req.body;
-
+// console.log(name, sso, email, photo)
   userModel
-    .one_sso(sso)
+    .list_sso(sso)
     .then((users) => {
-      console.log(users)
+      // console.log(users.length)
       if(users.length === 1){
         var payload = {
           username: users[0].name,
@@ -43,7 +43,7 @@ router.post('/sso',
         userModel
           .create(id, name, sso, email, photo)
           .then((user) => {
-            console.log(user)
+            // console.log(user.name)
             var payload = {
               username: user.name,
               userid: user.id,
@@ -51,7 +51,6 @@ router.post('/sso',
             var token = jwt.sign(payload, KEY, {algorithm: 'HS256', expiresIn: "365d"});
             res.send(token)
           })
-          res.send(token)
 
       }
     })

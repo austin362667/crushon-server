@@ -3,7 +3,7 @@ if (!global.db) {
   db = pgp(process.env.DB_URL);
 }
 
-function one_sso(sso) {
+function list_sso(sso) {
   const where = [];
   if(sso) where.push(`sso = $1`);
 
@@ -13,11 +13,11 @@ function one_sso(sso) {
         ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
         LIMIT 1
     `;
-  return db.one(sql, [sso]);
+  return db.any(sql, [sso]);
 }
 
 
-function one_id(id) {
+function list_id(id) {
   const where = [];
   if(id) where.push(`id = $1`);
 
@@ -27,7 +27,7 @@ function one_id(id) {
         ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
         LIMIT 1
     `;
-  return db.one(sql, [sso]);
+  return db.any(sql, [sso]);
 }
 
 
@@ -90,8 +90,8 @@ function update(id = '', lat = 0, long = 0, photo = '', gender = '', name = '') 
 }
 
 module.exports = {
-  one_sso,
-  one_id,
+  list_sso,
+  list_id,
   list,
   create,
   update,
