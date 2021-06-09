@@ -3,12 +3,37 @@ if (!global.db) {
   db = pgp(process.env.DB_URL);
 }
 
-function list(searchText = '', lat = 0, long = 0, id = '', sso = '') {
+function one_sso(sso = '') {
+  const where = [];
+  if(sso) where.push(`sso = $1`);
+
+  const sql = `
+        SELECT *
+        FROM users
+        ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
+        LIMIT 1
+    `;
+  return db.one(sql, [sso]);
+}
+
+
+function one_id(id = '') {
+  const where = [];
+  if(id) where.push(`id = $1`);
+
+  const sql = `
+        SELECT *
+        FROM users
+        ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
+        LIMIT 1
+    `;
+  return db.one(sql, [sso]);
+}
+
+
+function list(searchText = '', lat = 0, long = 0) {
   const where = [];
   if (searchText) where.push(`name ILIKE '%$1:value%'`);
-
-
-  if(sso) where.push(`sso = $2`);
 
   // if(id){
   //   where.push(`id = $2`);
@@ -30,7 +55,7 @@ function list(searchText = '', lat = 0, long = 0, id = '', sso = '') {
         ORDER BY ts DESC
         LIMIT 10
     `;
-  return db.any(sql, [searchText, sso]);
+  return db.any(sql, [searchText]);
 }
 
 function create(id = '', name = '', sso = '', email = '', photo = '') {
@@ -65,6 +90,8 @@ function update(id = '', lat = 0, long = 0, photo = '', gender = '', name = '') 
 }
 
 module.exports = {
+  one_sso,
+  one_id,
   list,
   create,
   update,

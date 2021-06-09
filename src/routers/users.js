@@ -28,7 +28,7 @@ router.post('/sso',
   const { name, sso, email, photo } = req.body;
 
   userModel
-    .list(searchText = '', lat = 0.0, long = 0.0, '', sso)
+    .one_sso(sso)
     .then((users) => {
       console.log(users)
       if(users.length === 1){
