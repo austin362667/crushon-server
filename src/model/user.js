@@ -43,13 +43,13 @@ function list_followee(id) {
   return db.any(sql, [id]);
 }
 
-function follow(id, from, to) {
+function follow(id, follower, followee) {
   const sql = `
         INSERT INTO follows ($<this:name>)
-        VALUES ($<id>, $<from>, $<to>)
+        VALUES ($<id>, $<follower>, $<followee>)
         RETURNING *
     `;
-  return db.one(sql, { id, from, to });
+  return db.one(sql, { id, follower, followee });
 }
 
 
@@ -133,4 +133,5 @@ module.exports = {
   update_location,
   list_followee,
   list_location,
+  follow,
 };

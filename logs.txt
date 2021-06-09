@@ -251,3 +251,40 @@
 1623232531 POST   /api/getUserLikeNum
 1623232561 POST   /api/getUserLikeNum
 1623232588 POST   /api/getUserLikeNum
+1623245862 POST   /api/createFollow
+1623245862 ERROR  TypeError: userModel.follow is not a function
+    at /Users/austin/Desktop/crushon-server/src/routers/users.js:67:6
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:275:10)
+    at module.exports (/Users/austin/Desktop/crushon-server/src/middleware/access-controller.js:20:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+1623245892 POST   /api/createFollow
+1623245894 ERROR  error: column "from" of relation "follows" does not exist
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623245930 POST   /api/createFollow
+1623245931 ERROR  Error: Property 'follower' doesn't exist.
+    at /Users/austin/Desktop/crushon-server/node_modules/pg-promise/lib/formatting.js:166:19
+    at String.replace (<anonymous>)
+    at Object.object (/Users/austin/Desktop/crushon-server/node_modules/pg-promise/lib/formatting.js:146:22)
+    at Object.formatQuery (/Users/austin/Desktop/crushon-server/node_modules/pg-promise/lib/formatting.js:300:29)
+    at Database.$query (/Users/austin/Desktop/crushon-server/node_modules/pg-promise/lib/query.js:129:40)
+    at Database.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-promise/lib/query.js:263:23)
+    at /Users/austin/Desktop/crushon-server/node_modules/pg-promise/lib/database.js:333:42
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1623245980 POST   /api/createFollow
+1623246034 POST   /api/createFollow
+1623246102 POST   /api/createFollow
+1623246364 POST   /api/createFollow

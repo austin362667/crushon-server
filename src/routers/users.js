@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const { v4: uuid } = require('uuid');
 var jwt = require('jsonwebtoken');
 const accessController = require('../middleware/access-controller.js');
@@ -43,6 +43,24 @@ router.post('/user_id', function (req, res, next) {
     })
     .catch(next);
 });
+
+// Count User By Followee
+router.post('/getUserRank', function (req, res, next) {
+  const { id } = req.body;
+  // var str = req.get('Authorization');
+  // jwt.verify(str, KEY, {algorithm: 'HS256'});
+  userModel
+    .list_followee(id)
+    .then((users) => {
+      userModel
+        .list_followee(null)
+        .then((all_follows) => {
+        res.json(users.length/all_follows.length);
+    })
+    })
+    .catch(next);
+});
+
 
 // List User By Followee
 router.post('/getUserLikeNum', function (req, res, next) {
