@@ -45,7 +45,7 @@ router.post('/user_id', function (req, res, next) {
 });
 
 // List User By Followee
-router.get('/getUserLikeNum', function (req, res, next) {
+router.post('/getUserLikeNum', function (req, res, next) {
   const { id } = req.body;
   // var str = req.get('Authorization');
   // jwt.verify(str, KEY, {algorithm: 'HS256'});
@@ -58,7 +58,7 @@ router.get('/getUserLikeNum', function (req, res, next) {
 });
 
 // List User Near By
-router.get('/getUserNearBy', function (req, res, next) {
+router.post('/getUserNearBy', function (req, res, next) {
   const { lat, long } = req.body;
   // var str = req.get('Authorization');
   // jwt.verify(str, KEY, {algorithm: 'HS256'});
