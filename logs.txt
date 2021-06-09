@@ -212,3 +212,39 @@
 1623223566 POST   /api/sso
 1623223590 POST   /api/sso
 1623223608 POST   /api/sso
+1623226410 POST   /api/user_id
+1623226410 ERROR  Error: User ID is required
+    at /Users/austin/Desktop/crushon-server/src/routers/users.js:33:17
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:275:10)
+    at module.exports (/Users/austin/Desktop/crushon-server/src/middleware/access-controller.js:20:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+1623226464 POST   /api/user_id
+1623226464 ERROR  ReferenceError: sso is not defined
+    at Object.list_id (/Users/austin/Desktop/crushon-server/src/model/user.js:30:23)
+    at /Users/austin/Desktop/crushon-server/src/routers/users.js:38:6
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/austin/Desktop/crushon-server/node_modules/express/lib/router/index.js:275:10)
+    at module.exports (/Users/austin/Desktop/crushon-server/src/middleware/access-controller.js:20:3)
+1623226494 POST   /api/user_id
+1623226495 ERROR  error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623226513 POST   /api/user_id

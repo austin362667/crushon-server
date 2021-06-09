@@ -26,7 +26,7 @@ router.get('/users', function (req, res, next) {
 
 // List User By ID
 router.post('/user_id', function (req, res, next) {
-  const { id } = req.query;
+  const { id } = req.body;
   // var str = req.get('Authorization');
   // jwt.verify(str, KEY, {algorithm: 'HS256'});
   if (!id) {

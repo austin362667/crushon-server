@@ -27,7 +27,7 @@ function list_id(id) {
         ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
         LIMIT 1
     `;
-  return db.any(sql, [sso]);
+  return db.any(sql, [id]);
 }
 
 
