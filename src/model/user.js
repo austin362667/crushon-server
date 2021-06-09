@@ -3,7 +3,7 @@ if (!global.db) {
   db = pgp(process.env.DB_URL);
 }
 
-function one_sso(sso = '') {
+function one_sso(sso) {
   const where = [];
   if(sso) where.push(`sso = $1`);
 
@@ -17,7 +17,7 @@ function one_sso(sso = '') {
 }
 
 
-function one_id(id = '') {
+function one_id(id) {
   const where = [];
   if(id) where.push(`id = $1`);
 
