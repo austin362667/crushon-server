@@ -18,7 +18,7 @@ router.get('/users', function (req, res, next) {
   userModel
     .list()
     .then((users) => {
-      res.json(users[0]);
+      res.json(users);
     })
     .catch(next);
 });
@@ -43,6 +43,33 @@ router.post('/user_id', function (req, res, next) {
     })
     .catch(next);
 });
+
+// List User By Followee
+router.get('/getUserLikeNum', function (req, res, next) {
+  const { id } = req.body;
+  // var str = req.get('Authorization');
+  // jwt.verify(str, KEY, {algorithm: 'HS256'});
+  userModel
+    .list_followee(id)
+    .then((users) => {
+      res.json(users.length);
+    })
+    .catch(next);
+});
+
+// List User Near By
+router.get('/getUserNearBy', function (req, res, next) {
+  const { lat, long } = req.body;
+  // var str = req.get('Authorization');
+  // jwt.verify(str, KEY, {algorithm: 'HS256'});
+  userModel
+    .list_location(lat, long)
+    .then((users) => {
+      res.json(users);
+    })
+    .catch(next);
+});
+
 
 // Single Sign On
 router.post('/sso', 

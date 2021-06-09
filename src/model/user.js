@@ -30,6 +30,37 @@ function list_id(id) {
   return db.any(sql, [id]);
 }
 
+function list_followee(id) {
+  const where = [];
+  if(id) where.push(`followee = $1`);
+
+  const sql = `
+        SELECT *
+        FROM follows
+        ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
+        ORDER BY ts DESC
+    `;
+  return db.any(sql, [id]);
+}
+
+
+function list_location(lat, long) {
+  const where = [];
+
+
+  if (lat) where.push('lat < $2 + 0.1 AND lat > $2 - 0.1');
+  if (long) where.push('long < $3 + 0.1 AND long > $3 - 0.1');
+  
+
+  const sql = `
+        SELECT *
+        FROM users
+        ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
+        ORDER BY ts DESC
+        LIMIT 100
+    `;
+  return db.any(sql, [lat, long]);
+}
 
 function list(searchText = '') {
   const where = [];
@@ -91,4 +122,6 @@ module.exports = {
   list,
   create,
   update_location,
+  list_followee,
+  list_location,
 };
