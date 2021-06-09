@@ -13,7 +13,7 @@ app.use(express.static('dist', {
         res.set('Cache-Control', 'public, s-maxage=86400');
     }
 }));
-app.use('/api', userRouter);
+app.use('/api', express.urlencoded(), userRouter);
 app.get('/*', (req, res) => res.redirect('/'));
 app.use(errorHandler);
 
