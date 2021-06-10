@@ -288,3 +288,37 @@
 1623246034 POST   /api/createFollow
 1623246102 POST   /api/createFollow
 1623246364 POST   /api/createFollow
+1623316576 POST   /api/getTheOne
+1623316620 POST   /api/getTheOne
+1623316621 ERROR  error: column "follows.ts" must appear in the GROUP BY clause or be used in an aggregate function
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623316654 POST   /api/getTheOne
+1623316757 POST   /api/getTheOne
+1623316783 POST   /api/getTheOne
+1623320645 POST   /api/getTheOne
+1623320645 ERROR  error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:287:98)
+    at Parser.handlePacket (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.<anonymous> (/Users/austin/Desktop/crushon-server/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+1623320666 POST   /api/getTheOne
+1623320731 POST   /api/getTheOne
+1623320745 POST   /api/getTheOne
+1623320766 POST   /api/getTheOne
+1623320848 POST   /api/getTheOne
+1623320857 POST   /api/getTheOne
+1623320904 POST   /api/getTheOne
+1623320969 POST   /api/getTheOne

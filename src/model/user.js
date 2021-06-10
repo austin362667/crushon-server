@@ -30,6 +30,20 @@ function list_id(id) {
   return db.any(sql, [id]);
 }
 
+function list_follower(id) {
+  const where = [];
+  if(id) where.push(`follower = $1`);
+
+  const sql = `
+        SELECT followee, COUNT (followee)
+        FROM follows
+        ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
+        GROUP BY followee
+        ORDER BY COUNT (followee) DESC
+    `;
+  return db.any(sql, [id]);
+}
+
 function list_followee(id) {
   const where = [];
   if(id) where.push(`followee = $1`);
@@ -131,6 +145,7 @@ module.exports = {
   list,
   create,
   update_location,
+  list_follower,
   list_followee,
   list_location,
   follow,

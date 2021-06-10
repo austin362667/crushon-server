@@ -158,4 +158,34 @@ router.post('/user_location',
   }
 );
 
+
+// Get User One 
+router.post('/getTheOne', function (req, res, next) {
+  const { id } = req.body;
+  // var str = req.get('Authorization');
+  // jwt.verify(str, KEY, {algorithm: 'HS256'});
+  userModel
+    .list_follower(id)
+    .then((users) => {
+      userModel.list_id(users[0]['followee'])
+        .then(async (users) => {
+          const source = await userModel.list_id(id);
+          const target = users;
+          const λ1 = source[0]['long']
+          const φ1 = source[0]['lat']
+          const λ2 = target[0]['long']
+          const φ2 = target[0]['lat']
+          // console.log(λ1, φ1, λ2, φ2)
+          const y = Math.sin(λ2-λ1) * Math.cos(φ2);
+          const x = Math.cos(φ1)*Math.sin(φ2) -
+                    Math.sin(φ1)*Math.cos(φ2)*Math.cos(λ2-λ1);
+          const θ = Math.atan2(y, x);
+          // console.log(θ)
+          const brng = (θ*180/Math.PI + 360) % 360; // in degrees
+          res.json(brng);
+        })
+    })
+    .catch(next);
+});
+
 module.exports = router;
