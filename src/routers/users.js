@@ -10,8 +10,6 @@ const router = express.Router();
 
 // AWS S3
 const AWS = require("aws-sdk");
-const awsConfig = require("./config-aws");
-const uuid = require("uuid");
 var bodyParser = require("body-parser");
 require('dotenv').config();
 
@@ -218,7 +216,7 @@ const getPresignedUrl = (req, res) => {
 
   fileType = fileType.substring(1, fileType.length);
 
-  const fileName = uuid.v4();
+  const fileName = uuid();
   const s3Params = {
     Bucket: S3_BUCKET,
     Key: fileName + "." + fileType,
