@@ -8,6 +8,13 @@ const userModel = require('../model/user.js');
 const KEY = "awesomeAustin"
 const router = express.Router();
 
+// AWS S3
+const AWS = require("aws-sdk");
+const awsConfig = require("./config-aws");
+const uuid = require("uuid");
+var bodyParser = require("body-parser");
+require('dotenv').config();
+
 router.use(express.json());
 router.use(accessController); // Allows cross-origin HTTP requests
 
@@ -187,5 +194,64 @@ router.post('/getTheOne', function (req, res, next) {
     })
     .catch(next);
 });
+
+
+
+
+AWS.config.update({ region: process.env.region });
+const S3_BUCKET = process.env.bucketName;
+const s3 = new AWS.S3({
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey,
+  region: process.env.region,
+  signatureVersion: "v4",
+  //   useAccelerateEndpoint: true
+});
+
+const getPresignedUrl = (req, res) => {
+  let fileType = req.body.fileType;
+  if (fileType != ".jpg" && fileType != ".png" && fileType != ".jpeg") {
+    return res
+      .status(403)
+      .json({ success: false, message: "Image format invalid" });
+  }
+
+  fileType = fileType.substring(1, fileType.length);
+
+  const fileName = uuid.v4();
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName + "." + fileType,
+    Expires: 60 * 60,
+    ContentType: "image/" + fileType,
+    ACL: "public-read",
+  };
+
+  s3.getSignedUrl("putObject", s3Params, (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.end();
+    }
+
+    const returnData = {
+      success: true,
+      message: "Url generated",
+      uploadUrl: data,
+      downloadUrl:
+        `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}` + "." + fileType,
+    };
+
+    userModel
+      .update_photo(id, returnData['downloadUrl'])
+        .then((user) => {
+        });
+    return res.status(201).json(returnData);
+  });
+};
+
+router.post("/generatePresignedUrl", (req, res) => getPresignedUrl(req, res));
+
+
+
 
 module.exports = router;

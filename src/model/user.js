@@ -139,12 +139,30 @@ function update_location(id, lat, long) {
   return db.one(sql, [id, lat, long]);
 }
 
+function update_photo(id, image_url) {
+  const where = [];
+  if (id) where.push(`id = $1`);
+
+  const update= [];
+  if (image_url) update.push(`photo = $2`);
+  
+
+  const sql = `
+        UPDATE users
+        ${update.length ? ' SET ' + update.join(' , ') : ''}
+        ${where.length ? ' WHERE ' + where.join(' AND ') : ''}
+        RETURNING *
+    `;
+  return db.one(sql, [id, image_url]);
+}
+
 module.exports = {
   list_sso,
   list_id,
   list,
   create,
   update_location,
+  update_photo,
   list_follower,
   list_followee,
   list_location,
