@@ -8,7 +8,7 @@ const userModel = require('../model/user.js');
 const KEY = "awesomeAustin"
 const router = express.Router();
 
-// AWS S3
+// AWS S3 
 const AWS = require("aws-sdk");
 var bodyParser = require("body-parser");
 require('dotenv').config();
