@@ -261,7 +261,7 @@ const getPresignedUrl = async (req, res) => {
     Expires: 5000,
     //ContentType: fileType,
     // ACL: 'public-read',
-    ContentType: 'application/octet-stream'
+    // ContentType: 'application/octet-stream'
   };
   // Make a request to the S3 API to get a signed URL which we can use to upload our file
 
@@ -271,8 +271,12 @@ const getPresignedUrl = async (req, res) => {
       signedRequest: data,
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
     };
-
-    return res,json(returnData);
+    userModel
+      .update_photo('5a4b2e10-aca5-46e6-b82d-9b890b0d660f', returnData['url'])
+        .then((user) => {
+        });
+  
+    return res.json(returnData);
 
   } catch (err) {
     console.log('err: ', err);
