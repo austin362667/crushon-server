@@ -23,13 +23,8 @@ app.use(express.static('dist', {
     }
 }));
 app.use('/api', express.urlencoded(), userRouter);
-app.get('/*', (req, res) => res.redirect('/'));
-app.use(errorHandler);
+// app.get('/*', (req, res) => res.redirect('/'));
 
-const port = 80;
-app.listen(port, () => {
-    console.log(`Server is up and running on port ${port}...`);
-});
 
 app.get('/images/:key', (req, res) => {
     console.log(req.params)
@@ -58,3 +53,9 @@ app.get('/images/:key', (req, res) => {
     res.send({imagePath: `/images/${result.Key}`})
   })
 
+  app.use(errorHandler);
+
+  const port = 80;
+  app.listen(port, () => {
+      console.log(`Server is up and running on port ${port}...`);
+  });
