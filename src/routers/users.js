@@ -252,15 +252,7 @@ const getPresignedUrl = async (req, res) => {
 
   const fileName = req.body.fileName
   const S3_BUCKET = 'image-picker-uploads'
-  const s3 = new AWS.AWS.S3({
-      accessKeyId: process.env.accessKeyId,
-      secretAccessKey: process.env.secretAccessKey,
-      region: process.env.region,
-      signatureVersion: "v4",
-      //   useAccelerateEndpoint: true
-    });
-
-    // Create a new instance of S3
+  const s3 = new AWS.S3();  // Create a new instance of S3
 
   // Set up the payload of what we are sending to the S3 api
   const s3Params = {
