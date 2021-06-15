@@ -196,56 +196,88 @@ router.post('/getTheOne', function (req, res, next) {
 
 
 
-AWS.config.update({ region: process.env.region });
-const S3_BUCKET = process.env.bucketName;
-const s3 = new AWS.S3({
-  accessKeyId: process.env.accessKeyId,
-  secretAccessKey: process.env.secretAccessKey,
-  region: process.env.region,
-  signatureVersion: "v4",
-  //   useAccelerateEndpoint: true
-});
+// AWS.config.update({ region: process.env.region });
+// const S3_BUCKET = process.env.bucketName;
+// const s3 = new AWS.S3({
+//   accessKeyId: process.env.accessKeyId,
+//   secretAccessKey: process.env.secretAccessKey,
+//   region: process.env.region,
+//   signatureVersion: "v4",
+//   //   useAccelerateEndpoint: true
+// });
 
-const getPresignedUrl = (req, res) => {
-  let fileType = req.body.fileType;
-  if (fileType != ".jpg" && fileType != ".png" && fileType != ".jpeg") {
-    return res
-      .status(403)
-      .json({ success: false, message: "Image format invalid" });
-  }
+// const getPresignedUrl = (req, res) => {
+//   let fileType = req.body.fileType;
+//   if (fileType != ".jpg" && fileType != ".png" && fileType != ".jpeg") {
+//     return res
+//       .status(403)
+//       .json({ success: false, message: "Image format invalid" });
+//   }
 
-  fileType = fileType.substring(1, fileType.length);
+//   fileType = fileType.substring(1, fileType.length);
 
-  const fileName = uuid();
+//   const fileName = uuid();
+//   const s3Params = {
+//     Bucket: S3_BUCKET,
+//     Key: fileName + "." + fileType,
+//     Expires: 60 * 60,
+//     ContentType: "image/" + fileType,
+//     ACL: "public-read",
+//   };
+
+//   s3.getSignedUrl("putObject", s3Params, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//       return res.end();
+//     }
+
+//     const returnData = {
+//       success: true,
+//       message: "Url generated",
+//       uploadUrl: data,
+//       downloadUrl:
+//         `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}` + "." + fileType,
+//     };
+
+//     userModel
+//       .update_photo(id, returnData['downloadUrl'])
+//         .then((user) => {
+//         });
+//     return res.status(201).json(returnData);
+//   });
+// };
+
+
+const getPresignedUrl = async (req, res) => {
+
+  const fileName = req.body.fileName
+  const S3_BUCKET = 'image-picker-uploads'
+  const s3 = new AWS.S3();  // Create a new instance of S3
+
+  // Set up the payload of what we are sending to the S3 api
   const s3Params = {
     Bucket: S3_BUCKET,
-    Key: fileName + "." + fileType,
-    Expires: 60 * 60,
-    ContentType: "image/" + fileType,
-    ACL: "public-read",
+    Key: fileName,
+    Expires: 5000,
+    //ContentType: fileType,
+    // ACL: 'public-read',
+    ContentType: 'application/octet-stream'
   };
+  // Make a request to the S3 API to get a signed URL which we can use to upload our file
 
-  s3.getSignedUrl("putObject", s3Params, (err, data) => {
-    if (err) {
-      console.log(err);
-      return res.end();
-    }
-
+  try {
+    const data = await s3.getSignedUrlPromise('getObject', s3Params);
     const returnData = {
-      success: true,
-      message: "Url generated",
-      uploadUrl: data,
-      downloadUrl:
-        `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}` + "." + fileType,
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
     };
 
-    userModel
-      .update_photo(id, returnData['downloadUrl'])
-        .then((user) => {
-        });
-    return res.status(201).json(returnData);
-  });
-};
+    return res,json(returnData);
+
+  } catch (err) {
+    console.log('err: ', err);
+  }
+}
 
 router.post("/generatePresignedUrl", (req, res) => getPresignedUrl(req, res));
 
