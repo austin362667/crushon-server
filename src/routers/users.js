@@ -260,7 +260,7 @@ const getPresignedUrl = async (req, res) => {
     Key: fileName,
     Expires: 5000,
     //ContentType: fileType,
-    ACL: 'public-read',
+    // ACL: 'public-read',
     // ContentType: 'application/octet-stream'
   };
   // Make a request to the S3 API to get a signed URL which we can use to upload our file
