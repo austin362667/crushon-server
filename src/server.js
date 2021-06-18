@@ -46,7 +46,7 @@ app.get('/images/:key', (req, res) => {
     console.log(result)
     // const description = req.body.description
     userModel
-    .update_photo('5a4b2e10-aca5-46e6-b82d-9b890b0d660f', `/images/${result.Key}`)
+    .update_photo(req.body.id, `/images/${result.Key}`)
       .then((user) => {
       });
 
