@@ -82,6 +82,7 @@ router.post('/getUserLikeNum', function (req, res, next) {
 
 // Set up the sender with your GCM/FCM API key (declare this once for multiple messages)
 var sender = new gcm.Sender('AAAA4ozA9jE:APA91bEvb8Fj7rvSycDTtz60Qv-OMEU0i1O59RDxNo7qanLuZhhT6jjnppMufkxWL3bq6PkUaFAB5mcOdBYHfd-cxjL_U9LiYpzNqChxzH5EEnievjjdQS-nzRiMxmbzn3WMlcRPSRul');
+
 var messageGood = new gcm.Message({
 	collapseKey: 'demo',
 	priority: 'high',
@@ -95,9 +96,9 @@ var messageGood = new gcm.Message({
 	},
 	notification: {
     sound:true,
-		title: "🔔🔔戀愛鈴:Crushon",
+		title: "🔔戀愛鈴:Crushon",
 		icon: "ic_launcher",
-		body: "您的戀愛鈴被敲響了\n方圓1km內有您的愛慕者!"
+		body: "您的戀愛鈴被敲響了❤❤\n方圓1km內有您的愛慕者!"
 	}
 });
 // var messageBad = new gcm.Message({
@@ -132,16 +133,20 @@ router.post('/createFollow', function (req, res, next) {
   userModel
     .follow( id, from, to )
     .then(() => {
-
       userModel.list_id(to).then((users) => {
+        console.log(users)
         regTokensGood.push(users[0].token)
+        console.log(regTokensGood)
+        sender.send(messageGood, { registrationTokens: regTokensGood }, function (err, response) {
+          if (err) console.error(err);
+          else console.log(response);
+        });
+
+
       })
-      sender.send(messageGood, { registrationTokens: regTokensGood }, function (err, response) {
-        if (err) console.error(err);
-        else console.log(response);
-      });
 
 
+        // console.log(messageGood);
       res.json('ok');
     })
     .catch(next);

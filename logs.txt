@@ -327,3 +327,13 @@
 1623750906 POST   /api/generatePresignedUrl
 1623750973 POST   /api/generatePresignedUrl
 1623750999 POST   /api/generatePresignedUrl
+1624809673 POST   /api/createFollow
+1624809699 POST   /api/createFollow
+1624809855 POST   /api/createFollow
+1624809857 ERROR  ReferenceError: users is not defined
+    at /Users/austin/Desktop/crushon-server/src/routers/users.js:136:21
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1624809894 POST   /api/createFollow
+1624809945 POST   /api/createFollow
+1624810046 POST   /api/createFollow
+1624810054 POST   /api/createFollow
