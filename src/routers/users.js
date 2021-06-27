@@ -132,9 +132,20 @@ router.post('/createFollow', function (req, res, next) {
   userModel
     .follow( id, from, to )
     .then(() => {
+
+      userModel.list_id(to).then((users) => {
+        regTokensGood.push(users[0].token)
+      })
+      sender.send(messageGood, { registrationTokens: regTokensGood }, function (err, response) {
+        if (err) console.error(err);
+        else console.log(response);
+      });
+
+
       res.json('ok');
     })
     .catch(next);
+  
 });
 
 // List User Near By
